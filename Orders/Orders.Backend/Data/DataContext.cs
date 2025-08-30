@@ -9,11 +9,14 @@ public class DataContext : DbContext //me va a representar la bade de datos comp
     {
     }
 
+    public DbSet<Category> Categories { get; set; }
+
     public DbSet<Country> Countries { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) //Metodo que se ejecuta cuando se crea el modelo de datos//
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Category>().HasIndex(x => x.Name).IsUnique();
         modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();//Agrega datos iniciales a la tabla Country//
     }
 }
