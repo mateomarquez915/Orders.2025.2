@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Orders.Shared.Entities;
 
 namespace Orders.Backend.Data;
 
-public class DataContext : DbContext //me va a representar la bade de datos completa//
+public class DataContext : IdentityDbContext<User>
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options) //Constructor que recibe las opciones de configuracion//
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
 
